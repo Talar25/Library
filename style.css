@@ -2,9 +2,11 @@
 
 :root {
     --primary-color: #0369a1;
+    --primary-color-low-opacity: hwb(201 1% 37% / 0.295);
 
     --white-color: #e6f0f6;
     --light-primary-color: #9ac3d9;
+    --dark-primary-color: #023551;
 }
 
 *,
@@ -73,6 +75,75 @@ header {
 transform: scale(1.05);
 }
 
+/* main */
+
+.add-box {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.add-box.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%) scale(1);
+  z-index: 99;
+
+
+  font-size: 1.6rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  background-color: var(--primary-color-low-opacity);
+  border-radius: 10px;
+  box-shadow: 2px 2px 60px 15px rgba(0, 0, 0, 0.116);
+  padding: 1.2rem;
+}
+
+.heading-secondary {
+  text-align: center;
+  font-weight: 900;
+  margin-top: 1rem;
+
+}
+
+.add-box input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.add-box > * {
+  margin-bottom: 1rem;
+  color: var(--primary-color)
+}
+
+.add-box .read-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.submit-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+
+  background-color: var(--dark-primary-color);
+  color: var(--white-color);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+
+/* footer */
 
 .footer {
     position: absolute;
