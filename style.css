@@ -246,6 +246,10 @@ transform: scale(1.05);
 
 }
 
+.book .read-button.not {
+  background-color: var(--button-color-2);
+}
+
 
 /* footer */
 

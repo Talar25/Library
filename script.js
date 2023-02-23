@@ -9,6 +9,7 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
+const readButton = document.querySelectorAll('.read-button');
 
 
 let myLibrary = [];
@@ -21,10 +22,29 @@ class Book {
         this.read = read;
     }
 
-    addBookToLibrary() {
+    changeRead () {
+        return this.read = 'Read' ? 'Not read yet' : 'Read';
+    }
+
+    static addBookToLibrary(book) {
         // do stuff here
-        return myLibrary.push(this);
+        myLibrary.push(book);
+
       }
+
+    static show () {
+        container.textContent = "";
+        return  myLibrary.forEach(book => {
+            container.innerHTML += `
+            <div class="book">
+            <h3 class="heading-tertiary">${book.title}</h3>
+            <p class="author">${book.author}</p>
+            <p class="pages">${book.pages}</p>
+            <button class="${book.read === 'Read' ? 'read-button' : 'read-button not'}">${book.read}</button>
+            <button class="remove-button">Remove</button>
+        </div>`
+        })
+    }
 
     removeBookFromLibrary () {
         // do some stuff here
@@ -58,16 +78,30 @@ window.addEventListener('keydown', (e) => {
 
 submit.addEventListener('click', () => {
     if(title.value && author.value && pages.value) {
-        container.innerHTML += `
-        <div class="book">
-        <h3 class="heading-tertiary">${title.value}</h3>
-        <p class="author">${author.value}</p>
-        <p class="pages">${pages.value}</p>
-        <button class="read-button">${read.value = 'on' ? 'read' : 'not read'}</button>
-        <button class="remove-button">Remove</button>
-    </div>`
+        const isRead = read.checked ? 'Read' : 'Not read yet'
+        const card = new Book (title.value, author.value, pages.value, isRead);
+        
+        Book.addBookToLibrary(card);
+        removeChar();
+        Book.show();
+
 
     addBox.classList.remove('active')
     }
 
 })
+
+const removeChar = function () {
+    title.value = ""
+    author.value = ""
+    pages.value = ""
+    read.value = 'unchecked';
+}
+
+
+//changing read/not read
+
+// readButton.forEach(btn => {
+//     btn.addEventListener('click', changeRead)
+// })
+
