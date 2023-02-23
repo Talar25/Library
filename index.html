@@ -17,15 +17,27 @@
     </div>
 </header>
     <main>
-        <div class="add-box active">
+        <div class="add-box">
             <h2 class="heading-secondary">Add a new book!</h2>
-            <input placeholder="Title" id="title" type="text">
-            <input placeholder="Author" id="author" type="text">
-            <input placeholder="Pages" id="pages" type="text">
+            <input placeholder="Title" id="title" type="text" required>
+            <input placeholder="Author" id="author" type="text" required>
+            <input placeholder="Pages" id="pages" type="text" required>
             <div class="read-box">
-            <legend>Have you read it?</legend><input type="checkbox">
+            <legend for="read">Have you read it?</legend><input name="ticked" id="read" type="checkbox">
         </div>
         <button id="submit-button" class="submit-button">Submit button</button>
+        </div>
+        <div class="container">
+
+            <div class="book">
+                <h3 class="heading-tertiary">Title</h3>
+                <p class="author">Author</p>
+                <p class="pages">Pages</p>
+                <button class="read-button">Read</button>
+                <button class="remove-button">Remove</button>
+            </div>
+            
+            
         </div>
     </main>
     <footer class="footer"><p>

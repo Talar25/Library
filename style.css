@@ -7,6 +7,13 @@
     --white-color: #e6f0f6;
     --light-primary-color: #9ac3d9;
     --dark-primary-color: #023551;
+    --deep-dark-primary-color: #011f30;
+
+    --button-color-1: #099268;
+    --button-color-12: #087f5b;
+
+    --button-color-2: #e03131;
+    --button-color-22: #c92a2a;
 }
 
 *,
@@ -77,23 +84,16 @@ transform: scale(1.05);
 
 /* main */
 
-.add-box {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-
+.add-box,
 .add-box.active {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
+  transform:translate(-50%, -50%);
+  transition: 2s all;
+
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform:translate(-50%, -50%) scale(1);
+
+
   z-index: 99;
-
-
   font-size: 1.6rem;
   width: 25rem;
   display: flex;
@@ -104,6 +104,28 @@ transform: scale(1.05);
   border-radius: 10px;
   box-shadow: 2px 2px 60px 15px rgba(0, 0, 0, 0.116);
   padding: 1.2rem;
+  
+  transition: 0.3s all ease-in-out; 
+  
+}
+
+.add-box {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  visibility: visible;
+    position: absolute;
+
+  left: -50%;
+}
+
+.add-box.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+
+  left: 50%;
+  transform:translate(-50%, -50%) scale(1);
 }
 
 .heading-secondary {
@@ -139,8 +161,90 @@ transform: scale(1.05);
   color: var(--white-color);
   font-size: 2rem;
   font-weight: 700;
+
+
+  transition: 0.3s all;
 }
 
+.submit-button:hover {
+  transform: translateY(-5%)
+}
+
+.submit-button:active {
+  transform: translateY(5%)
+}
+
+
+.container {
+  padding: 3rem;
+
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.book {
+  background-color: #fff;
+  border: 5px solid #e6f0f6;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 60px 15px rgba(0, 0, 0, 0.116);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+
+  font-size: 2rem;
+
+  transition: 0.5s all;
+}
+
+.book:hover {
+  transform: scale(1.02);
+}
+
+
+.heading-tertiary {
+  font-size: 3rem;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  width: 100%;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book button:first-of-type {
+  margin-top: 2rem;
+}
+
+.book button {
+  align-self: stretch;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+
+.book .read-button {
+  background-color: var(--button-color-1);
+  color: var(--white-color);
+
+  transition: 0.5s all;
+
+}
 
 
 /* footer */
