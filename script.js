@@ -9,8 +9,8 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
-const readButton = document.querySelectorAll('.read-button');
-
+// const readButton = document.querySelectorAll('.read-button');
+// const removeButton = document.querySelectorAll('.remove-button');
 
 let myLibrary = [];
 
@@ -22,9 +22,6 @@ class Book {
         this.read = read;
     }
 
-    changeRead () {
-        return this.read = 'Read' ? 'Not read yet' : 'Read';
-    }
 
     static addBookToLibrary(book) {
         // do stuff here
@@ -34,21 +31,19 @@ class Book {
 
     static show () {
         container.textContent = "";
-        return  myLibrary.forEach(book => {
+        return  myLibrary.forEach((book, i) => {
             container.innerHTML += `
             <div class="book">
             <h3 class="heading-tertiary">${book.title}</h3>
             <p class="author">${book.author}</p>
             <p class="pages">${book.pages}</p>
-            <button class="${book.read === 'Read' ? 'read-button' : 'read-button not'}">${book.read}</button>
-            <button class="remove-button">Remove</button>
+            <button onclick="changeRead(${i})" class="${book.read === 'Read' ? 'read-button' : 'read-button not'}">${book.read}</button>
+            <button onclick="removeBookFromLibrary(${i})" class="remove-button">Remove</button>
         </div>`
         })
     }
 
-    removeBookFromLibrary () {
-        // do some stuff here
-    }
+
 }
 
 //testing
@@ -101,7 +96,21 @@ const removeChar = function () {
 
 //changing read/not read
 
-// readButton.forEach(btn => {
-//     btn.addEventListener('click', changeRead)
-// })
+function changeRead (index) {
 
+    if(myLibrary[index].read === 'Read'){
+        myLibrary[index].read = 'Not read yet';
+    }else {
+        myLibrary[index].read = 'Read';
+    }
+    return Book.show();
+}
+
+
+
+//removing
+function removeBookFromLibrary (index) {
+    // do some stuff here
+    myLibrary.splice(index, 1);
+    Book.show();
+}
